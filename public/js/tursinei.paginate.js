@@ -34,15 +34,14 @@
                 if (divScrollable.length == 0) {
                     divScrollable = TABLE.wrap('<div class="table-scrollable"></div>').parent();
                 }
-
+                $(this).data(keyPrefix, setting);
                 $.get(setting.url, function (res) {
                     if(setting.searching){
                         genCari(divScrollable);
                     }
-                    generateTr(res,setting);
-                    genPages(divScrollable, res,setting);
+                    generateTr(res);
+                    genPages(divScrollable, res);
                 });
-                $(this).data(keyPrefix, setting);
             })
         },
         reload :  function () {
@@ -64,9 +63,10 @@
         }
     };
 
-    function generateTr(e,setting) {
+    function generateTr(e) {
         let tr = "",
             no = e.from;
+        let setting = $(TABLE).data(keyPrefix);
         e.data.forEach((obj) => {
             let trObj = $("<tr></tr>");
             if (setting.numbering) {
@@ -107,6 +107,7 @@
 
     function genCari(divScrollable) {
         let divCari = divScrollable.prev("div.row").find("div.text-right");
+        let setting = $(TABLE).data(keyPrefix);
         if (divCari.length == 0) {
             divCari = $("<div></div>").addClass("col-md-12");
             let sField = $('<input id="tPaginate-search">')
@@ -114,20 +115,19 @@
                 .addClass("form-control input-medium input-sm pull-right")
                 .attr("placeholder", "Search");
             sField.on("input", function () {
-                if (this.value.length >= 2) {
-                    let data = { tsearch: this.value };
-                    $.get(defaultSetting.url, data, function (res) {
-                        generateTr(res);
-                        genPages(divScrollable, res);
-                    });
-                }
+                let data = { tsearch: this.value };
+                $.get(setting.url, data, function (res) {
+                    generateTr(res);
+                    genPages(divScrollable, res);
+                });
             });
             let divRow = $('<div class="row"></div>').append(divCari);
             divRow.insertBefore(divScrollable);
         }
     }
 
-    function genPages(divScrollable, resPaginate,setting) {
+    function genPages(divScrollable, resPaginate) {
+        let setting = $(TABLE).data(keyPrefix);
         let divPagination = divScrollable.next("div.row");
         if (divPagination.length == 0) {
             divPagination = $('<div class="row"></div>').insertAfter(divScrollable);
@@ -144,7 +144,7 @@
                 '<li class="'+disablePrv+'"><a href="'+res.prev_page_url+'">&laquo; Previous</a></li>'
             );
             ulPagination.append(liPrev);
-            eventClickPage(liPrev.find('a'), divScrollable,setting);
+            eventClickPage(liPrev.find('a'), divScrollable);
             if (res.next_page_url == null) {
                 disableNex = "disabled";
                 href = "#";
@@ -153,7 +153,7 @@
                 '<li class="'+disableNex+'"><a href="'+res.next_page_url+'">Next &raquo;</a></li>'
             );
             ulPagination.append(liNext);
-            eventClickPage(liNext.find('a'), divScrollable,setting);
+            eventClickPage(liNext.find('a'), divScrollable);
         } else {
             resPaginate.links.forEach((link) => {
                 let disable = "",
@@ -170,14 +170,15 @@
                 let li = $(
                     '<li class="'+disable+' '+active+'"><a href="'+href+'">'+link.label+'</a></li>'
                 );
-                eventClickPage(li.find('a'), divScrollable, setting);
+                eventClickPage(li.find('a'), divScrollable);
                 ulPagination.append(li);
             });
         }
         divPagination.find(".text-right").html(ulPagination);
     }
 
-    function eventClickPage(a, divScrollable,setting) {
+    function eventClickPage(a, divScrollable) {
+        let setting = $(TABLE).data(keyPrefix);
         $(a).click(function (evt) {
             evt.preventDefault();
             if (!$(this).parent().hasClass("active") && !$(this).parent().hasClass("disabled") || setting.reload) {
@@ -194,8 +195,8 @@
                 }
 
                 $.get(url, data, function (res) {
-                    generateTr(res,setting);
-                    genPages(divScrollable, res,setting);
+                    generateTr(res);
+                    genPages(divScrollable, res);
                 });
             }
         });
