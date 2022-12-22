@@ -24,7 +24,7 @@ class AnakAsuhController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            return $this->service->listAnakAsuhAktif();
+            return $this->service->listAnakAsuhAktif($request);
         }
         return view('pages.anakasuh');
     }

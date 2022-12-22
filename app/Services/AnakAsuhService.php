@@ -7,13 +7,24 @@ use App\Models\AnakAsuh;
 use App\Models\Kordes;
 use App\Models\Parents;
 use App\Models\Pengasuh;
+use Illuminate\Http\Request;
 
 class AnakAsuhService
 {
 
-    public function listAnakAsuhAktif(){
+    public function listAnakAsuhAktif(Request $request){
+        $search = $request->get('tsearch');
         $return = AnakAsuh::select('anakasuh_id','nama','gender','tgl_lahir','is_yatim', 'anak_ke', 'tgl_masuk')
-                ->where('is_alumni',false)->paginate(10);
+                ->where('is_alumni',false)
+                ->when($search,function ($query) use ($search){
+                    $searchQuery = $query->where('nama', 'like', "%$search%");
+                    $lowerSearch = strtolower($search);
+                    if(($lowerSearch == 'yatim') OR ($lowerSearch == 'yatim piatu')){
+                        $valueNilaiYatim = $lowerSearch == 'yatim' ? true : false;
+                        $searchQuery->orWhere('is_yatim', $valueNilaiYatim);
+                    }
+                    return $searchQuery;
+                })->paginate(10);
         $ubah = $return->getCollection()->map(function($item){
             $item['is_yatim'] = $item['is_yatim'] ? 'Yatim' : 'Yatim Piatu';
             $item['gender'] = ucfirst($item['gender']);
