@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers\Master;
 
+use App\Http\Controllers\Controller;
 use App\Models\MProgram;
 use App\Http\Requests\StoreMProgramRequest;
 use App\Http\Requests\UpdateMProgramRequest;
+use App\Services\ProgramService;
+use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
+    private ProgramService $service;
+
+    public function __construct(ProgramService $serviceParam) {
+        $this->service = $serviceParam;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->ajax()){
+            return $this->service->listProgram($request);
+        }
+        return view('pages.mprogram');
     }
 
     /**
@@ -36,7 +47,11 @@ class ProgramController extends Controller
      */
     public function store(StoreMProgramRequest $request)
     {
-        //
+        $program = $this->service->simpan($request);
+        return response()->json([
+            'data' => $program,
+            'message' => trans('crud.simpan')
+        ]);
     }
 
     /**
@@ -45,9 +60,9 @@ class ProgramController extends Controller
      * @param  \App\Models\MProgram  $mProgram
      * @return \Illuminate\Http\Response
      */
-    public function show(MProgram $mProgram)
+    public function show(MProgram $program)
     {
-        //
+        return $program;
     }
 
     /**
@@ -79,8 +94,11 @@ class ProgramController extends Controller
      * @param  \App\Models\MProgram  $mProgram
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MProgram $mProgram)
+    public function destroy($program)
     {
-        //
+        $del = MProgram::destroy($program);
+        return response()->json([
+            'message' => trans('crud.hapusMessage')
+        ]);
     }
 }

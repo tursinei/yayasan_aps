@@ -13,7 +13,7 @@ class StoreMProgramRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreMProgramRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'program_id'    => ['nullable'],
+            'program'       => ['required', 'max:255', 'string']
         ];
     }
 }
