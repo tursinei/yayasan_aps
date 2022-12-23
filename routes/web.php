@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Master\KegiatanController;
+use App\Http\Controllers\Master\KuratorController;
 use App\Http\Controllers\Master\ProgramController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +29,6 @@ Route::resource('user', UsersController::class);
 Route::resource('yatama', AnakAsuhController::class);
 Route::resource('program', ProgramController::class);
 Route::resource('kegiatan', KegiatanController::class);
+Route::resource('kurator', KuratorController::class);
 
 require __DIR__.'/auth.php';
