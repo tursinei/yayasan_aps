@@ -9,7 +9,7 @@
         searching :  true,
         cols: [],
         colId: "",
-        url: "",
+        url: window.location.href,
         state : true,
         reload : false,
         simple : false,
