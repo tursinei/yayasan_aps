@@ -24,7 +24,7 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            $list = $this->service->listUser();
+            $list = $this->service->listUser($request);
             return $list;
         }
         $perans = Users::getPeran();

@@ -109,8 +109,7 @@ return [
                     'title'     => 'Pengeluaran',
                     'url'       => 'laporan-pengeluaran',
                     'akses'     => [IS_ADMIN, IS_PENGURUS, IS_KORDES, IS_SEKRETARIS, IS_BENDAHARA, IS_HUMAS]
-                ],
-                [
+                ], [
                     'icon'      => 'icon-layers',
                     'title'     => 'RAB',
                     'url'       => 'laporan-rab',
@@ -120,13 +119,13 @@ return [
                     'title'     => 'Pendidikan Yatama',
                     'url'       => 'laporan-pendidikan',
                     'akses'     => [IS_ADMIN, IS_KESEHATAN]
+                ],[
+                    'icon'      => 'icon-layers',
+                    'title'     => 'Rekam Medis',
+                    'url'       => 'laporan-rekam-medis',
+                    'akses'     => [IS_ADMIN, IS_KESEHATAN]
                 ],
-            ], [
-                'icon'      => 'icon-layers',
-                'title'     => 'Rekam Medis',
-                'url'       => 'laporan-rekam-medis',
-                'akses'     => [IS_ADMIN, IS_KESEHATAN]
-            ],
+            ]
         ],[
             'icon'      => 'icon-grid',
             'title'     => 'Master Data',
@@ -147,23 +146,18 @@ return [
                 ],
                 [
                     'icon'      => 'icon-user',
-                    'title'     => 'Pengurus',
-                    'url'       => 'pengurus.index',
-                    'akses'     => [IS_ADMIN]
-                ],
-                [
-                    'icon'      => 'icon-user',
                     'title'     => 'Kurator',
                     'url'       => 'kurator.index',
                     'akses'     => [IS_ADMIN]
                 ],
-                [
-                    'icon'      => 'icon-user',
-                    'title'     => 'Kordes',
-                    'url'       => 'kordes.index',
-                    'akses'     => [IS_ADMIN]
-                ],
             ]
-        ],
+        ],[
+
+            'icon'      => 'icon-users',
+            'title'     => 'Users',
+            'subtitle'  => 'User Aplikasi',
+            'url'       => 'user.index',
+            'akses'     => [IS_ADMIN],
+        ]
     ]
 ];
