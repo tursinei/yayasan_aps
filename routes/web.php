@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnakAsuhController;
+use App\Http\Controllers\CalonYatamaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Master\KegiatanController;
 use App\Http\Controllers\Master\KuratorController;
@@ -30,5 +31,8 @@ Route::resource('yatama', AnakAsuhController::class);
 Route::resource('program', ProgramController::class);
 Route::resource('kegiatan', KegiatanController::class);
 Route::resource('kurator', KuratorController::class);
+Route::resource('calonyatama',CalonYatamaController::class);
+Route::get('pendaftaran', [CalonYatamaController::class, 'pendaftaran'])->name('calonyatama.pendaftaran');
+
 
 require __DIR__.'/auth.php';

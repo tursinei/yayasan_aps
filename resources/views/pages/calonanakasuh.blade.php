@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Yatama')
+@section('title', 'Calon Yatama')
 {{-- @section('subTitle', 'Welcome, this page after login') --}}
 @push('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/profile.css') }}">
@@ -36,8 +36,8 @@
     <script type="text/javascript">
         $(document).ready(function(params) {
             $('#tbl-data').tPaginate({
-                url: '{{ route('yatama.index') }}',
-                colId: 'anakasuh_id',
+                url: '{{ route('calonyatama.index') }}',
+                colId: 'calon_id',
                 cols: [
                     { key: 'nama', class: ''},
                     { key: 'gender', class: 'text-center'},
@@ -47,15 +47,13 @@
                     { key: 'tgl_masuk', class: 'text-center' },
                 ]
             });
-        }).on('reset', '#fo-users', function(e) {
-            $('input[name="id"]').val('');
         }).on('submit', '#fo-yatama', function(e) {
             e.preventDefault();
             let fo = $(this),
                 data = toFormData(fo),
                 btn = fo.find('button[type="submit"]');
             gAjax(btn.find('i'), {
-                url: `{{ route('yatama.store') }}`,
+                url: `{{ route('calonyatama.store') }}`,
                 dataType: 'JSON',
                 data: data,
                 processData :false,
@@ -69,7 +67,7 @@
             });
         }).on('click', '.btn-update', function name(e) {
             let b = $(this);
-            let url = `{{ route('yatama.show', ['yatama' => ':id']) }}`;
+            let url = `{{ route('calonyatama.show', ['calonyatama' => ':id']) }}`;
             url = url.replace(':id', b.attr('data-id'));
             gAjax(b.find('i'), {
                 url: url,
@@ -82,7 +80,7 @@
             });
         }).on('click', '.btn-delete', function() {
             let b = $(this);
-            let url = `{{ route('yatama.destroy', ['yatama' => ':id']) }}`;
+            let url = `{{ route('calonyatama.destroy', ['calonyatama' => ':id']) }}`;
             url = url.replace(':id', b.attr('data-id'));
             bootbox.confirm('{{ trans('crud.hapusConfirm') }}', function(ans) {
                 if (ans) {

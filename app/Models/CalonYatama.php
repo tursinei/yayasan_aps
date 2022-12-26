@@ -112,6 +112,9 @@ class CalonYatama extends Model
         'is_yatim',
         'is_sebelum_yatim',
         'tgl_lahir',
+        'foto',
+        'data_orangtua',
+        'data_pengasuh',
         'user_id',
     ];
 
@@ -144,9 +147,13 @@ class CalonYatama extends Model
         'gender'           => 'string',
         'yatim_umur'       => 'integer',
         'nama'             => 'string',
-        'is_yatim'         => 'integer',
+        'is_yatim'         => 'string',
         'is_sebelum_yatim' => 'integer',
         'user_id'          => 'integer',
+        'tgl_lahir'        => 'date:d-m-Y',
+        'tgl_masuk'        => 'date:d-m-Y',
+        'data_orangtua'    => 'string',
+        'data_pengasuh'    => 'string',
     ];
 
     /**

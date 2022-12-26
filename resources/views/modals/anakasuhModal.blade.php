@@ -22,7 +22,15 @@
             </div>
             <div class="col-md-9" style="padding-left: 0px">
                 <div class="form-group">
-                    <input type="hidden" name="anakasuh[anakasuh_id]" value="{{ $anak->anakasuh_id }}">
+                    @php
+                        $keyId = 'anakasuh_id';
+                        $valueId = $anak->anakasuh_id;
+                        if(isset($anak->calon_id)){
+                            $keyId = 'calon_id';
+                            $valueId = $anak->calon_id;
+                        }
+                    @endphp
+                    <input type="hidden" name="anakasuh[{{ $keyId }}]" value="{{ $valueId }}">
                     <label class="col-md-3">Nama</label>
                     <div class="col-md-9">
                         @php
@@ -75,12 +83,12 @@
                                 $sts = [0,1];
                                 $init = array_fill_keys($sts,false);
                                 $keyCek = $anak->is_yatim ?? '';
-                                if(isset($sts[$keyCek])){
-                                    $sts[$keyCek] = true;
+                                if(isset($init[$keyCek])){
+                                    $init[$keyCek] = true;
                                 }
                                 $labelIsyatim = ['Yatim Piatu', 'Yatim'];
                             @endphp
-                            @foreach ($sts as $key => $item)
+                            @foreach ($init as $key => $item)
                                 <label class="radio-inline">
                                     {!! Form::radio('anakasuh[is_yatim]', $key, $item) !!}
                                     &nbsp;{{ $labelIsyatim[$key] }}
@@ -97,12 +105,12 @@
                                 $sts = [0,1];
                                 $init = array_fill_keys($sts,false);
                                 $keyCek = $anak->is_sebelum_yatim ?? '';
-                                if(isset($sts[$keyCek])){
-                                    $sts[$keyCek] = true;
+                                if(isset($init[$keyCek])){
+                                    $init[$keyCek] = true;
                                 }
                                 $labelYatim = ['Sebelum Lahir', 'Setelah Lahir'];
                             @endphp
-                            @foreach ($sts as $key => $item)
+                            @foreach ($init as $key => $item)
                                 <label class="radio-inline">
                                     {!! Form::radio('anakasuh[is_sebelum_yatim]', $key, $item) !!}
                                     &nbsp;{{ $labelYatim[$key] }}
@@ -196,18 +204,18 @@
             <div class="form-group">
                 <label class="col-md-3">Nama Kordes</label>
                 <div class="col-md-5">
-                    {!! Form::hidden('kordes[kordes_id]', $anak->kordes->kordes_id??'') !!}
+                    {!! Form::hidden('kordes[kordes_id]', '') !!}
                     @php
                         $options['class'] = 'form-control input-sm';
                         $options['placeholder'] = 'Nama Kordes';
                     @endphp
-                    {!! Form::text('kordes[nama]', $anak->kordes->nama??'', $options) !!}
+                    {!! Form::text('kordes[nama]', '', $options) !!}
                 </div>
                 <div class="col-md-4">
                     @php
                         $options['placeholder'] = 'Tahun Masuk';
                     @endphp
-                    {!! Form::number('kordes[tahun]', $anak->kordes->tahun??'', $options) !!}
+                    {!! Form::number('kordes[tahun]','', $options) !!}
                 </div>
             </div>
         </fieldset>

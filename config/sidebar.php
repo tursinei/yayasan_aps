@@ -19,13 +19,13 @@ return [
             'icon'  => 'icon-notebook',
             'title' => 'Pendaftaran',
             'subTitle' => 'Daftar Yatama',
-            'url'   => 'yatama',
+            'url'   => 'calonyatama.pendaftaran',
             'akses' => [IS_ADMIN, IS_KORDES, IS_HUMAS, IS_KESEHATAN]
         ], [
             'icon'      => 'icon-briefcase',
             'title'     => 'Calon Yatama',
             'subTitle'  => 'Yatama Sebelum Diverifikasi',
-            'url'       => '#',
+            'url'       => 'calonyatama.index',
             'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS, IS_KESEHATAN]
         ], [
             'icon'      => 'icon-briefcase',
@@ -41,9 +41,8 @@ return [
             'sub_menu'  => [
                 [
                     'icon'      => 'icon-layers',
-                    'title'     => 'Data Pribadi',
-                    'url'       => 'yatama.index
-                    ',
+                    'title'     => 'Data Informasi',
+                    'url'       => 'yatama.index',
                     'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS]
                 ],
                 [
