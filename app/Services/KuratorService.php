@@ -2,9 +2,7 @@
 
 namespace App\Services;
 
-use App\Http\Requests\StoreMkegiatanRequest;
 use App\Http\Requests\StoreMKuratorRequest;
-use App\Models\MKegiatan;
 use App\Models\MKurator;
 use Illuminate\Http\Request;
 
