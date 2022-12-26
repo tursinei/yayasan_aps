@@ -73,15 +73,16 @@
                 let td = $("<td></td>").text(no).addClass("text-center");
                 trObj.append(td[0].outerHTML);
             }
-            setting.cols.forEach((col) => {
+            setting.cols.forEach((column) => {
                 let td = $("<td></td>").appendTo(trObj)
-                if (typeof col == "object") {
-                    td.html(obj[col.key]).addClass(col.class);
-                    if(typeof col.custom == 'function'){
-                        td.html(col.custom(obj[col.key],trObj));
-                    }
-                } else if(typeof col == 'function'){
-                    td.html(col(obj,td))
+                if (typeof column == "object") {
+                    td.html(obj[column.key]).addClass(column.class);
+                    // dihilangkan soalnya sama saja dengan column is function
+                    // if(typeof column.custom == 'function'){
+                    //     td.html(column.custom(obj[column.key],trObj));
+                    // }
+                } else if(typeof column == 'function'){
+                    td.html(column(obj,td)) // if column is function
                 } else {
                     td.text(obj[col]);
                 }
