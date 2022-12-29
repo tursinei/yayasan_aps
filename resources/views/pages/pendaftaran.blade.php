@@ -119,8 +119,8 @@
                     <fieldset>
                         <legend>Data Orang Tua Kandung</legend>
                         <div class="form-group">
-                            <label class="col-md-3">Nama Ayah / Ibu</label>
-                            <div class="col-md-5">
+                            <label class="col-md-2 me-2">Nama Ayah / Ibu</label>
+                            <div class="col-md-5 ms-4">
                                 {!! Form::hidden('orangtua[parent_id]', '') !!}
                                 @php
                                     $options['placeholder'] = 'Nama Ayah / Ibu';
@@ -129,8 +129,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3">Pekerjaan</label>
-                            <div class="col-md-5">
+                            <label class="col-md-2 me-2">Pekerjaan</label>
+                            <div class="col-md-5 ms-4">
                                 @php
                                     $options['placeholder'] = 'Pekerjaan Orang Tua';
                                 @endphp
@@ -138,8 +138,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3">Alamat Tinggal</label>
-                            <div class="col-md-9">
+                            <label class="col-md-2 me-2">Alamat Tinggal</label>
+                            <div class="col-md-9 ms-4">
                                 @php
                                     $options['class'] = 'form-control';
                                     $options['placeholder'] = 'Alamat Tempat Tinggal';
@@ -152,8 +152,8 @@
                     <fieldset>
                         <legend>Data Pengasuh & Kordes</legend>
                         <div class="form-group">
-                            <label class="col-md-3">Nama</label>
-                            <div class="col-md-5">
+                            <label class="col-md-2 me-2">Nama</label>
+                            <div class="col-md-5 ms-4">
                                 {!! Form::hidden('pengasuh[pengasuh_id]', '') !!}
                                 @php
                                     $options['class'] = 'form-control input-sm';
@@ -163,8 +163,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3">Pekerjaan & No HP</label>
-                            <div class="col-md-5">
+                            <label class="col-md-2 me-2">Pekerjaan & No HP</label>
+                            <div class="col-md-5 ms-4">
                                 @php
                                     $options['placeholder'] = 'Pekerjaan Pengasuh';
                                 @endphp
@@ -178,8 +178,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3">Alamat Tinggal</label>
-                            <div class="col-md-9">
+                            <label class="col-md-2 me-2">Alamat Tinggal</label>
+                            <div class="col-md-9 ms-4">
                                 @php
                                     $options['class'] = 'form-control';
                                     $options['placeholder'] = 'Alamat Tempat Tinggal';
@@ -188,20 +188,21 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3">Nama Kordes</label>
-                            <div class="col-md-5">
-                                {!! Form::hidden('kordes[kordes_id]', '') !!}
+                            <label class="col-md-2 me-2">Kordes</label>
+                            <div class="col-md-4 ms-4">
                                 @php
                                     $options['class'] = 'form-control input-sm';
-                                    $options['placeholder'] = 'Nama Kordes';
+                                    $options['placeholder'] = '--Pilih Kordes--';
                                 @endphp
-                                {!! Form::text('kordes[nama]', '', $options) !!}
+                                {!! Form::select('anakasuh[user_id]',$kordes,'',$options) !!}
                             </div>
-                            <div class="col-md-4">
+                            <label class="col-md-2">Tanggal Masuk</label>
+                            <div class="col-md-3">
                                 @php
-                                    $options['placeholder'] = 'Tahun Masuk';
+                                    $options['placeholder'] = 'Tanggal Masuk';
+                                    $now = date('Y-m-d');
                                 @endphp
-                                {!! Form::number('kordes[tahun]', '', $options) !!}
+                                {!! Form::date('anakasuh[tgl_masuk]', $now, $options) !!}
                             </div>
                         </div>
                     </fieldset>

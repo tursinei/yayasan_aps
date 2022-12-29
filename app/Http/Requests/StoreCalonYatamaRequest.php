@@ -42,9 +42,8 @@ class StoreCalonYatamaRequest extends FormRequest
             'pengasuh.nama'          => ['nullable','string','max:250'],
             'pengasuh.pekerjaan'     => ['nullable','string','max:250'],
             'pengasuh.alamat'        => ['nullable','string','max:250'],
-            'kordes.kordes_id'       => ['nullable','integer'],
-            'kordes.nama'            => ['nullable','string','max:250'],
-            'kordes.tahun'           => ['nullable','integer','min:2000', 'nullable']
+            'anakasuh.user_id'       => ['nullable','integer'],
+            'anakasuh.tgl_masuk'     => ['required','date']
         ];
     }
 
@@ -57,6 +56,7 @@ class StoreCalonYatamaRequest extends FormRequest
             'anakasuh.gender.required' => 'Jenis Kelamin Wajib Diisi',
             'anakasuh.is_yatim.required' => 'Status anak wajib ditentukan',
             'anakasuh.is_sebelum_yatim.required' => 'Status yatim wajib ditentukan',
+            'anakasuh.tgl_masuk.required' => 'Tanggal Masuk Yatama wajib diisi',
         ];
     }
 }
