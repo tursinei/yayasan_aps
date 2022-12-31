@@ -1,5 +1,5 @@
 /**
- * plugin jquery Pagination integrated with laravel paginate function via ajax .
+ * A jquery plugin Pagination integrated with laravel paginate function via ajax .
  * Copyright (c) 2022 Velly tursinei;
  */
 (function ($) {
@@ -11,8 +11,8 @@
         colId: "",
         url: window.location.href,
         state : true,
-        reload : false,
         simple : false,
+        reload : false,
     };
     let TABLE = null;
     let keyPrefix = '_tPaginate';

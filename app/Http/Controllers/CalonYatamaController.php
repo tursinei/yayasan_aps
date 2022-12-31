@@ -6,6 +6,7 @@ use App\Models\CalonYatama;
 use App\Http\Requests\StoreCalonYatamaRequest;
 use App\Http\Requests\UpdateCalonYatamaRequest;
 use App\Services\CalonYatamaService;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class CalonYatamaController extends Controller
@@ -32,10 +33,11 @@ class CalonYatamaController extends Controller
 
     public function pendaftaran()
     {
-        return view('pages.pendaftaran');
+        $kordes = User::kordes()->orderBy('name')->pluck('name','id')->toArray();
+        return view('pages.pendaftaran',compact('kordes'));
     }
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource.)
      *
      * @return \Illuminate\Http\Response
      */
@@ -70,7 +72,8 @@ class CalonYatamaController extends Controller
         $anak = $calonyatama;
         $anak->parent = json_decode($anak->data_orangtua);
         $anak->pengasuh = json_decode($anak->data_pengasuh);
-        return view('modals.anakasuhModal',compact('anak'));
+        $kordes = $kordes = User::kordes()->orderBy('name')->pluck('name','id')->toArray();
+        return view('modals.anakasuhModal',compact('anak','kordes'));
     }
 
     /**

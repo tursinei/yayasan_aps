@@ -31,7 +31,7 @@
                         }
                     @endphp
                     <input type="hidden" name="anakasuh[{{ $keyId }}]" value="{{ $valueId }}">
-                    <label class="col-md-3">Nama</label>
+                    <label class="col-md-3 control-label">Nama</label>
                     <div class="col-md-9">
                         @php
                             $options['placeholder'] = 'nama';
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3">Tempat / Tgl Lahir</label>
+                    <label class="col-md-3 control-label">Tempat / Tgl Lahir</label>
                     <div class="col-md-5">
                         @php
                             $options['placeholder'] = 'Tempat Lahir';
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3">Jenis Kelamin</label>
+                    <label class="col-md-3 control-label">Jenis Kelamin</label>
                     <div class="col-md-9">
                         <div class="radio-list" style="padding-left: 20px">
                             @php
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3">Status Anak</label>
+                    <label class="col-md-3 control-label">Status Anak</label>
                     <div class="col-md-9">
                         <div class="radio-list" style="padding-left: 20px">
                             @php
@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3">Status Yatim</label>
+                    <label class="col-md-3 control-label">Status Yatim</label>
                     <div class="col-md-9">
                         <div class="radio-list" style="padding-left: 20px">
                             @php
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3">Yatim dari Umur</label>
+                    <label class="col-md-3 control-label">Yatim dari Umur</label>
                     <div class="col-md-5">
                         @php
                             $options['placeholder'] = 'Yatim dari Umur';
@@ -133,8 +133,8 @@
         <fieldset>
             <legend>Data Orang Tua Kandung</legend>
             <div class="form-group">
-                <label class="col-md-3">Nama Ayah / Ibu</label>
-                <div class="col-md-5">
+                <label class="col-md-2 pe-0 control-label">Nama Ayah / Ibu</label>
+                <div class="col-md-5 ps-5">
                     {!! Form::hidden('orangtua[parent_id]', $anak->parent->parent_id??'') !!}
                     @php
                         $options['placeholder'] = 'Nama Ayah / Ibu';
@@ -143,8 +143,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">Pekerjaan</label>
-                <div class="col-md-5">
+                <label class="col-md-2 pe-0 control-label">Pekerjaan</label>
+                <div class="col-md-5 ps-5">
                     @php
                         $options['placeholder'] = 'Pekerjaan Orang Tua';
                     @endphp
@@ -152,8 +152,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">Alamat Tinggal</label>
-                <div class="col-md-9">
+                <label class="col-md-2 pe-0 control-label">Alamat Tinggal</label>
+                <div class="col-md-9 ps-5">
                     @php
                         $options['class'] = 'form-control';
                         $options['placeholder'] = 'Alamat Tempat Tinggal';
@@ -166,8 +166,8 @@
         <fieldset>
             <legend>Data Pengasuh & Kordes</legend>
             <div class="form-group">
-                <label class="col-md-3">Nama</label>
-                <div class="col-md-5">
+                <label class="col-md-2 pe-0 control-label">Nama</label>
+                <div class="col-md-5 ps-5">
                     {!! Form::hidden('pengasuh[pengasuh_id]', $anak->pengasuh->pengasuh_id??'') !!}
                     @php
                         $options['class'] = 'form-control input-sm';
@@ -177,8 +177,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">Pekerjaan</label>
-                <div class="col-md-5">
+                <label class="col-md-2 pe-0 control-label">Pekerjaan</label>
+                <div class="col-md-5 ps-5">
                     @php
                         $options['placeholder'] = 'Pekerjaan Pengasuh';
                     @endphp
@@ -192,8 +192,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">Alamat Tinggal</label>
-                <div class="col-md-9">
+                <label class="col-md-2 pe-0 control-label">Alamat Tinggal</label>
+                <div class="col-md-9 ps-5">
                     @php
                         $options['class'] = 'form-control';
                         $options['placeholder'] = 'Alamat Tempat Tinggal';
@@ -202,20 +202,20 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-3">Nama Kordes</label>
-                <div class="col-md-5">
-                    {!! Form::hidden('kordes[kordes_id]', '') !!}
+                <label class="col-md-2 pe-0 control-label">Nama Kordes</label>
+                <div class="col-md-4 ps-5">
                     @php
                         $options['class'] = 'form-control input-sm';
-                        $options['placeholder'] = 'Nama Kordes';
+                        $options['placeholder'] = '--Pilih Kordes--';
                     @endphp
-                    {!! Form::text('kordes[nama]', '', $options) !!}
+                    {!! Form::select('anakasuh[user_id]',$kordes, $anak->user_id??'', $options) !!}
                 </div>
-                <div class="col-md-4">
+                <label class="col-md-2 pe-0 control-label">Nama Kordes</label>
+                <div class="col-md-3">
                     @php
-                        $options['placeholder'] = 'Tahun Masuk';
+                        $options['placeholder'] = 'Tahun Tanggal Masuk';
                     @endphp
-                    {!! Form::number('kordes[tahun]','', $options) !!}
+                    {!! Form::date('anakasuh[tgl_masuk]',$anak->tgl_masuk??'', $options) !!}
                 </div>
             </div>
         </fieldset>
