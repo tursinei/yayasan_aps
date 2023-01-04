@@ -116,6 +116,8 @@ class CalonYatama extends Model
         'data_orangtua',
         'data_pengasuh',
         'user_id',
+        'status',
+        'alasan_tolak'
     ];
 
     /**

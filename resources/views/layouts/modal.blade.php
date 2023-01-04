@@ -13,11 +13,12 @@
                     @yield('ModalBody')
                 </div>
                 <div class="modal-footer">
+                    @yield('leftButtons','')
                     <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Tutup</button>
                     @php
                         $hideSubmit = ($isSubmit??true)?'':'d-none';
                     @endphp
-                    <button type="submit" class="btn btn-sm btn-success {{ $hideSubmit }}"><i class="fa fa-save"></i>&nbsp;Simpan</button>
+                    <button type="submit" class="btn btn-sm btn-success {{ $hideSubmit }}"><i class="fa fa-save"></i>&nbsp;@yield('textButtonSave','Simpan')</button>
                 </div>
             </form>
         </form>

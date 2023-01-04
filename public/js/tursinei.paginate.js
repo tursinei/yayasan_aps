@@ -26,7 +26,7 @@
                 }
 
                 TABLE = $(this);
-                if (setting.colId == "" && settiing.useButtons) {
+                if (setting.colId == "" && setting.useButtons) {
                     throw 'Key colId as column name of primary key from table Undefined, as long as Key useButtons is true ';
                 }
 

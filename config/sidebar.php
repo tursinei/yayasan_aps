@@ -31,7 +31,7 @@ return [
             'icon'      => 'icon-briefcase',
             'title'     => 'Verifikasi',
             'subTitle'  => 'Verifikasi Calon Yatama',
-            'url'       => '#',
+            'url'       => 'verifikasi.index',
             'akses'     => [IS_ADMIN, IS_SEKRETARIS]
         ], [
             'icon'      => 'icon-briefcase',
