@@ -30,6 +30,7 @@ class StoreCalonYatamaRequest extends FormRequest
             'anakasuh.tgl_lahir'     => ['required','date'],
             'anakasuh.gender'        => ['required','string'],
             'anakasuh.is_yatim'      => ['required','boolean'],
+            'anakasuh.status'        => ['nullable','integer'],
             'anakasuh.is_sebelum_yatim' => ['required','boolean'],
             'anakasuh.yatim_umur'    => ['nullable','integer'],
             'anakasuh.anak_ke'       => ['nullable','numeric'],

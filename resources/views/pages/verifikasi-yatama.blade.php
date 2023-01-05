@@ -12,12 +12,13 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 5%;">No</th>
-                        <th class="text-center" style="width: 30%;">Nama</th>
+                        <th class="text-center" style="width: 20%;">Nama</th>
                         <th class="text-center" style="width: 5%;">Gender</th>
                         <th class="text-center" style="width: 10%;">Tanggal Lahir</th>
                         <th class="text-center" style="width: 10%;">Yatim&nbsp;/&nbsp;Piatu</th>
                         <th class="text-center" style="width: 10%;">Anak&nbsp;Ke</th>
                         <th class="text-center" style="width: 10%;">Tanggal Masuk</th>
+                        <th class="text-center" style="width: 10%;">Status</th>
                         <th class="text-center" style="width: 10%;">&nbsp;</th>
                     </tr>
                 </thead>
@@ -44,6 +45,21 @@
                     { key: 'is_yatim', class: 'text-center' },
                     { key: 'anak_ke', class: 'text-center' },
                     { key: 'tgl_masuk', class: 'text-center' },
+                    function(obj, td) {
+                        let lbl = 'label-default', text = 'Belum divalidasi', label = $('<label/>');
+                        if(obj.status == 1){
+                            lbl = 'label-danger';
+                            text = 'Ditolak';
+                            label.attr('title', obj.alasan_tolak);
+                        } else if(obj.status == 2){
+                            lbl = 'label-success';
+                            text = 'Divalidasi';
+                        }
+                        label.addClass('label label-sm '+lbl);
+                        label.text(text);
+                        td.addClass('text-center');
+                        return label;
+                    },
                     function(obj, td) {
                         td.addClass('text-center');
                         return `<button type="button" data-id="${obj.calon_id}" title="Konfirmasi" class="btn btn-xs btn-success btn-confirm"><i class="fa fa-gavel"></i></button>`;

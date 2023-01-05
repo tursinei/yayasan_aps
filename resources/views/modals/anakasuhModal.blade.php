@@ -3,10 +3,23 @@
 @section('ModalBody')
 @php
     $options = ['class' => 'form-control input-sm'];
-    // dd($anak);
+    $status = $anak->status??0;
+    $textButtonSave = 'Simpan';
 @endphp
 <div class="form-horizontal" role="form">
     <div class="form-body">
+        @if ($status == 1)
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                <strong class="alert-heading">Alasan ditolak :</strong><br/>
+
+                {{ $anak->alasan_tolak??'' }}
+            </div>
+            {!! Form::hidden('anakasuh[status]', 0) !!}
+            @php
+                $textButtonSave = 'Simpan & Ubah Status';
+            @endphp
+        @endif
         <fieldset>
             <legend>Data Pribadi</legend>
             @php
@@ -210,10 +223,10 @@
                     @endphp
                     {!! Form::select('anakasuh[user_id]',$kordes, $anak->user_id??'', $options) !!}
                 </div>
-                <label class="col-md-2 pe-0 control-label">Nama Kordes</label>
+                <label class="col-md-2 pe-0 control-label">Tanggal Masuk</label>
                 <div class="col-md-3">
                     @php
-                        $options['placeholder'] = 'Tahun Tanggal Masuk';
+                        $options['placeholder'] = 'Tanggal Masuk';
                     @endphp
                     {!! Form::date('anakasuh[tgl_masuk]',$anak->tgl_masuk??'', $options) !!}
                 </div>
@@ -222,3 +235,5 @@
     </div>
 </div>
 @endsection
+
+@section('textButtonSave',$textButtonSave);

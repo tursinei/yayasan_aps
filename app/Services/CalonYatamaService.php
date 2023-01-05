@@ -33,7 +33,7 @@ class CalonYatamaService
     public function simpan(StoreCalonYatamaRequest $request)
     {
         $data = $request->validated();
-        $calon = $data['anakasuh']; 
+        $calon = $data['anakasuh'];
         $parents = array_filter($data['orangtua']);
         $pengasuh =  array_filter($data['pengasuh']);
         if($request->hasFile('anakasuh.foto')){

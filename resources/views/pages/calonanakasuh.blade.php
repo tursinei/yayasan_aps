@@ -38,7 +38,7 @@
         $(document).ready(function(params) {
             $('#tbl-data').tPaginate({
                 url: '{{ route('calonyatama.index') }}',
-                colId: 'calon_id',
+                useButtons : false,
                 cols: [
                     { key: 'nama', class: ''},
                     { key: 'gender', class: 'text-center'},
@@ -51,6 +51,7 @@
                         if(obj.status == 1){
                             lbl = 'label-danger';
                             text = 'Ditolak';
+                            label.attr('title', obj.alasan_tolak);
                         } else if(obj.status == 2){
                             lbl = 'label-success';
                             text = 'Divalidasi';
@@ -59,7 +60,16 @@
                         label.text(text);
                         td.addClass('text-center');
                         return label;
-                    },
+                    }, function(obj,td) {
+                        let bUpdate = '<button type="button" data-id="'+obj.calon_id+'" class="btn btn-xs btn-info btn-update"><i class="fa fa-pencil"></i></button>';
+                        let bDel = '<button type="button" data-id=""'+obj.calon_id+'" class="btn btn-xs btn-delete btn-danger"><i class="fa fa-trash"></i></button>';
+                        let btns = bUpdate+'&nbsp;'+bDel;
+                        if(obj.status == 2){
+                            return '';
+                        }
+                        return btns;
+
+                    }
                 ]
             });
         }).on('submit', '#fo-yatama', function(e) {
