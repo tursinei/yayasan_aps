@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 //region ### Additional namespace #
@@ -48,7 +49,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Pendidikan                  updateOrCreate($attributes, $values = ['*'])
  * @method static Collection|Pendidikan[]     get($columns = ['*'])
  */
-class Pendidikan extends Eloquent
+class Pendidikan extends Model
 {
     /**
      * The table associated with the model.
@@ -62,7 +63,7 @@ class Pendidikan extends Eloquent
      *
      * @var string
      */
-    protected $primaryKey = 'jenjang_id';
+    protected $primaryKey = 'pendidikan_id';
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -91,10 +92,10 @@ class Pendidikan extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'jenjang_id',
+        'pendidikan_id',
         'jenjang',
         'nama_sekolah',
-        'kelas',
+        'kelas_id',
         'wali_kelas',
         'anakasuh_id',
     ];
@@ -119,10 +120,10 @@ class Pendidikan extends Eloquent
      * @var array
      */
     protected $casts = [
-        'jenjang_id'   => 'integer',
+        'pendidikan_id'   => 'integer',
         'jenjang'      => 'string',
         'nama_sekolah' => 'string',
-        'kelas'        => 'string',
+        'kelas_id'     => 'integer',
         'wali_kelas'   => 'string',
         'anakasuh_id'  => 'integer',
     ];

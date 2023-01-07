@@ -149,6 +149,12 @@ return [
                     'url'       => 'kurator.index',
                     'akses'     => [IS_ADMIN]
                 ],
+                [
+                    'icon'      => 'icon-folder',
+                    'title'     => 'Kelas',
+                    'url'       => 'kelas.index',
+                    'akses'     => [IS_ADMIN]
+                ],
             ]
         ],[
 

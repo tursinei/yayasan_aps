@@ -4,8 +4,10 @@ use App\Http\Controllers\AnakAsuhController;
 use App\Http\Controllers\CalonYatamaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Master\KegiatanController;
+use App\Http\Controllers\Master\KelasController;
 use App\Http\Controllers\Master\KuratorController;
 use App\Http\Controllers\Master\ProgramController;
+use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VerifikasiController;
 use Illuminate\Support\Facades\Route;
@@ -32,8 +34,10 @@ Route::resource('yatama', AnakAsuhController::class);
 Route::resource('program', ProgramController::class);
 Route::resource('kegiatan', KegiatanController::class);
 Route::resource('kurator', KuratorController::class);
+Route::resource('kelas', KelasController::class);
 Route::resource('calonyatama',CalonYatamaController::class);
 Route::resource('verifikasi',VerifikasiController::class);
+Route::resource('pendidikan',PendidikanController::class);
 Route::get('pendaftaran', [CalonYatamaController::class, 'pendaftaran'])->name('calonyatama.pendaftaran');
 
 

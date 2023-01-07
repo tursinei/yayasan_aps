@@ -201,6 +201,8 @@ class AnakAsuh extends Model
         return $this->hasOne('App\Models\Pengasuh', 'anakasuh_id', 'anakasuh_id');
     }
 
-    //region ### User defined function #
-    //endregion
+    public function scopeActive()
+    {
+        return $this->where('is_alumni', false);
+    }
 }
