@@ -11,11 +11,6 @@ use Illuminate\Http\Request;
 class PendidikanService
 {
 
-    public function listAnak()
-    {
-        return AnakAsuh::active()->orderBy('nama')->pluck('nama','anakasuh_id');
-    }
-
     public function listKelas()
     {
         return MKelas::orderBy('kelas_nama')->pluck('kelas_nama','kelas_id');

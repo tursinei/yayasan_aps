@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 class AnakAsuhService
 {
 
+    public function listNamaAnakAktif()
+    {
+        return AnakAsuh::active()->orderBy('nama')->pluck('nama','anakasuh_id');
+    }
+
     public function listAnakAsuhAktif(Request $request){
         $search = $request->get('tsearch');
         $return = AnakAsuh::select('anakasuh_id','nama','gender','tgl_lahir','is_yatim', 'anak_ke', 'tgl_masuk')

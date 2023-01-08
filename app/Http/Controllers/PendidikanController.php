@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendidikan;
 use App\Http\Requests\StorePendidikanRequest;
+use App\Services\AnakAsuhService;
 use App\Services\PendidikanService;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,8 @@ class PendidikanController extends Controller
      */
     public function create()
     {
-        $listAnak = $this->service->listAnak();
+        $anakService = new AnakAsuhService();
+        $listAnak = $anakService->listNamaAnakAktif();
         $listKelas = $this->service->listKelas();
         return view('modals.pendidikanModal', compact('listAnak','listKelas'));
     }
@@ -62,7 +64,8 @@ class PendidikanController extends Controller
      */
     public function show(Pendidikan $pendidikan)
     {
-        $listAnak = $this->service->listAnak();
+        $anakService = new AnakAsuhService();
+        $listAnak = $anakService->listNamaAnakAktif();
         $listKelas = $this->service->listKelas();
         return view('modals.pendidikanModal',compact('pendidikan','listAnak','listKelas'));
     }
