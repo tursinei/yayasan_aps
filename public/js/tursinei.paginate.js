@@ -80,7 +80,7 @@
                     td.html(obj[column.key]).addClass(column.class);
                     // dihilangkan soalnya sama saja dengan column is function
                     // if(typeof column.custom == 'function'){
-                    //     td.html(column.custom(obj[column.key],trObj));
+                    //     td.html(column.custom(obj[column.key],trOj));
                     // }
                 } else if(typeof column == 'function'){
                     td.html(column(obj,td)) // if column is function
