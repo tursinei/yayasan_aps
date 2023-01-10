@@ -10,6 +10,7 @@
         cols: [],
         colId: "",
         url: window.location.href,
+        data : {},
         state : true,
         simple : false,
         reload : false,
@@ -35,7 +36,7 @@
                     divScrollable = TABLE.wrap('<div class="table-scrollable"></div>').parent();
                 }
                 $(this).data(keyPrefix, setting);
-                $.get(setting.url, function (res) {
+                $.get(setting.url, setting.data ,function (res) {
                     if(setting.searching){
                         genCari(divScrollable);
                     }
@@ -107,16 +108,17 @@
     }
 
     function genCari(divScrollable) {
-        let divCari = divScrollable.prev("div.row").find("div.text-right");
+        let divCari = divScrollable.prev("div.row").find("div.div-search");
         let setting = $(TABLE).data(keyPrefix);
         if (divCari.length == 0) {
-            divCari = $("<div></div>").addClass("col-md-12");
+            divCari = $("<div></div>").addClass("col-md-12 div-search");
             let sField = $('<input id="tPaginate-search">')
                 .appendTo(divCari)
                 .addClass("form-control input-medium input-sm pull-right")
                 .attr("placeholder", "Search");
             sField.on("input", function () {
-                let data = { tsearch: this.value };
+                let data = setting.data;//{ tsearch: this.value };
+                data.tsearch = this.value;
                 $.get(setting.url, data, function (res) {
                     generateTr(res);
                     genPages(divScrollable, res);
@@ -183,7 +185,7 @@
         $(a).click(function (evt) {
             evt.preventDefault();
             if (!$(this).parent().hasClass("active") && !$(this).parent().hasClass("disabled") || setting.reload) {
-                let data = {}, url = this.href;
+                let data = setting.data , url = this.href;
                 if(setting.searching){
                     data.tsearch = $("#tPaginate-search").val();
                 }
