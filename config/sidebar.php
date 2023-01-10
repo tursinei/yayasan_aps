@@ -54,7 +54,7 @@ return [
                 [
                     'icon'      => 'icon-layers',
                     'title'     => 'Rekam Medis',
-                    'url'       => 'pendidikan',
+                    'url'       => 'rekammedis',
                     'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS, IS_KESEHATAN]
                 ],
             ]

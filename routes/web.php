@@ -8,6 +8,7 @@ use App\Http\Controllers\Master\KelasController;
 use App\Http\Controllers\Master\KuratorController;
 use App\Http\Controllers\Master\ProgramController;
 use App\Http\Controllers\PendidikanController;
+use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VerifikasiController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,7 @@ Route::resource('kelas', KelasController::class);
 Route::resource('calonyatama',CalonYatamaController::class);
 Route::resource('verifikasi',VerifikasiController::class);
 Route::resource('pendidikan',PendidikanController::class);
+Route::resource('rekammedis',RekamMedisController::class);
 Route::get('pendaftaran', [CalonYatamaController::class, 'pendaftaran'])->name('calonyatama.pendaftaran');
 
 
