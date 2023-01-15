@@ -2,7 +2,7 @@
 
 @section('title', 'Pendidikan')
 @push('css')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" type="text/css">
 @endpush
 @section('content')
     <div class="row">
@@ -32,7 +32,7 @@
 @endsection
 
 @push('js')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ assets('js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(params) {
             $('#tbl-data').tPaginate({
