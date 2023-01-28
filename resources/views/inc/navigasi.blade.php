@@ -20,7 +20,7 @@ function renderSubMenu($value, $currentUrl)
         if ($isActiveChildUrl && !$isParentActive) {
             $isParentActive = true;
         }
-        $active = $isActiveChildUrl ? 'nav-active' : '';
+        $active = $isActiveChildUrl ? 'active' : '';
         if (Route::has($menu['url'])) {
             $menu['url'] = route($menu['url']);
         } else {

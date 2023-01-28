@@ -73,12 +73,12 @@ return [
                 [
                     'icon'      => 'icon-layers',
                     'title'     => 'Pemasukan',
-                    'url'       => 'pemasukan',
+                    'url'       => 'pemasukan.index',
                     'akses'     => [IS_ADMIN, IS_BENDAHARA]
                 ], [
                     'icon'      => 'icon-layers',
                     'title'     => 'Pengeluaran',
-                    'url'       => 'pengeluaran',
+                    'url'       => 'pengeluaran.index',
                     'akses'     => [IS_ADMIN, IS_BENDAHARA]
                 ],
             ]

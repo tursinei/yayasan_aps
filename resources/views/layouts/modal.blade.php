@@ -1,4 +1,4 @@
-<div class="modal" id="myModal" role="dialog">
+<div class="modal fade in" id="myModal" role="dialog">
     <div class="modal-dialog @if($isLarge??false)
         modal-lg
     @endif">
@@ -9,7 +9,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">{{ $modalTitle }}</h4>
                 </div>
-                <div class="modal-body py-0">
+                <div class="modal-body">
                     @yield('ModalBody')
                 </div>
                 <div class="modal-footer">

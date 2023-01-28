@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 //region ### Additional namespace #
@@ -48,7 +49,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Pemasukan                  updateOrCreate($attributes, $values = ['*'])
  * @method static Collection|Pemasukan[]     get($columns = ['*'])
  */
-class Pemasukan extends Eloquent
+class Pemasukan extends Model
 {
     /**
      * The table associated with the model.
@@ -123,12 +124,13 @@ class Pemasukan extends Eloquent
      * @var array
      */
     protected $casts = [
+        'tgl'           => 'date:d-m-Y',
         'pemasukan_id'  => 'integer',
-        'is_donasi'     => 'integer',
+        'is_donasi'     => 'boolean',
         'kategori_lain' => 'string',
         'nama_donatur'  => 'string',
         'keterangan'    => 'string',
-        'nominal'       => 'float',
+        'nominal'       => 'string',
         'kurator_id'    => 'integer',
     ];
 
