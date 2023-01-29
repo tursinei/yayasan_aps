@@ -91,6 +91,7 @@ class MKegiatan extends Model
     protected $fillable = [
         'kegiatan_id',
         'kegiatan',
+        'bukan_santunan'
     ];
 
     /**
@@ -117,6 +118,7 @@ class MKegiatan extends Model
     protected $casts = [
         'kegiatan_id' => 'integer',
         'kegiatan'    => 'string',
+        'bukan_santunan' => 'boolean'
     ];
 
     /**

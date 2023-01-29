@@ -5,12 +5,12 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
             <form class="form-horizontal" role="form" id="fo-kegiatan">
                 <div class="form-group">
                     <input type="hidden" name="kegiatan_id" value="">
                     <label class="col-md-3">Nama Kegiatan</label>
-                    <div class="col-md-9">
+                    <div class="col-md-6">
                         @php
                             $options= [
                                 'placeholder' => 'Nama Kegiatan',
@@ -18,6 +18,14 @@
                             ];
                         @endphp
                         {!! Form::text('kegiatan', '', $options) !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="checkbox-list">
+                            <label class="">
+                                {!! Form::checkbox('bukan_santunan', 1) !!}
+                                Bukan Santunan
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -35,7 +43,8 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 10%;">No</th>
-                        <th class="text-center" style="width: 80%;">Nama Program</th>
+                        <th class="text-center" style="width: 60%;">Nama Program</th>
+                        <th class="text-center" style="width: 20%;">Jenis</th>
                         <th class="text-center" style="width: 10%;">&nbsp;</th>
                     </tr>
                 </thead>
@@ -58,10 +67,12 @@
                 colId: 'kegiatan_id',
                 cols: [
                     { key: 'kegiatan', class: ''},
+                    { key: 'santunan', class: 'text-center'},
                 ]
             });
         }).on('reset', '#fo-kegiatan', function(e) {
             $('input[name="kegiatan_id"]').val('');
+            $('input[name="bukan_santunan"]').prop('checked',false).parent().removeClass('checked');
         }).on('submit', '#fo-kegiatan', function(e) {
             e.preventDefault();
             let fo = $(this),
@@ -88,6 +99,11 @@
                 done: function(res) {
                     $('input[name="kegiatan_id"]').val(res.kegiatan_id);
                     $('input[name="kegiatan"]').val(res.kegiatan);
+                    let c = $('input[name="bukan_santunan"]').prop('checked',res.bukan_santunan).parent().removeClass('checked');
+                    if(res.bukan_santunan){
+                        console.log(c);
+                        c.addClass('checked');
+                    }
                 }
             });
         }).on('click', '.btn-delete', function() {

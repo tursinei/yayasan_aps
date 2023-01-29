@@ -25,7 +25,8 @@ class StoreMkegiatanRequest extends FormRequest
     {
         return [
             'kegiatan_id'    => ['nullable'],
-            'kegiatan'       => ['required', 'max:255', 'string']
+            'kegiatan'       => ['required', 'max:255', 'string'],
+            'bukan_santunan' => ['nullable', 'boolean']
         ];
     }
 }
