@@ -12,10 +12,11 @@
             <thead>
                 <tr>
                     <th class="text-center" style="width: 10%;">Tanggal</th>
-                    <th class="text-center" style="width: 15%;">Kategori</th>
-                    <th class="text-center" style="width: 30%;">Nama Donatur&nbsp;/&nbsp;Lainnya</th>
+                    <th class="text-center" style="width: 10%;">Kategori</th>
+                    <th class="text-center" style="width: 25%;">Nama Donatur&nbsp;/&nbsp;Lainnya</th>
                     <th class="text-center" style="width: 20%;">Keterangan</th>
                     <th class="text-center" style="width: 15%;">Nominal</th>
+                    <th class="text-center" style="width: 10%;">Kurator</th>
                     <th class="text-center" style="width: 10%;">&nbsp;</th>
                 </tr>
             </thead>
@@ -39,6 +40,7 @@
                     { key: 'donatur_lainnya'},
                     { key: 'keterangan' },
                     { key: 'nominal', class:'text-right'},
+                    { key: 'kurator'},
                 ]
             });
         }).on('click', '.btn-add', function(e) {

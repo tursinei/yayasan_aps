@@ -31,7 +31,7 @@ class StorePemasukanRequest extends FormRequest
             'nama_donatur'  => ['nullable'],
             'keterangan'    => ['nullable'],
             'nominal'       => ['required'],
-            'kurator_id'    => ['nullable','integer']
+            'kurator'       => ['nullable','string']
 
         ];
     }

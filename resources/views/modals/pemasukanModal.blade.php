@@ -87,9 +87,9 @@
                 <label class="col-md-3 control-label pt-0">Kurator</label>
                 <div class="col-md-5">
                     @php
-                        $options['placeholder'] = '--Pilih Kurator--';
+                        $options['placeholder'] = 'Masukkan nama kurator';
                     @endphp
-                    {!! Form::select('kurator_id', $kurator, $pemasukan->kurator_id??'', $options) !!}
+                    {!! Form::text('kurator', $pemasukan->kurator??'', $options) !!}
                 </div>
             </div>
         </div>

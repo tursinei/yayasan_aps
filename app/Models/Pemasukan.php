@@ -99,7 +99,7 @@ class Pemasukan extends Model
         'nama_donatur',
         'keterangan',
         'nominal',
-        'kurator_id',
+        'kurator',
     ];
 
     /**
@@ -131,16 +131,8 @@ class Pemasukan extends Model
         'nama_donatur'  => 'string',
         'keterangan'    => 'string',
         'nominal'       => 'string',
-        'kurator_id'    => 'integer',
+        'kurator'    => 'string',
     ];
-
-    /**
-     * @return BelongsTo|Builder|MKurator
-     */
-    public function mKurator()
-    {
-        return $this->belongsTo('App\Models\MKurator', 'kurator_id', 'kurator_id');
-    }
 
     //region ### User defined function #
     //endregion

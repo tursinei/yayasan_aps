@@ -37,8 +37,7 @@ class PemasukanController extends Controller
      */
     public function create()
     {
-        $kurator = MKurator::orderBy('nama')->pluck('nama','kurator_id');
-        return view('modals.pemasukanModal', compact('kurator'));
+        return view('modals.pemasukanModal');
     }
 
     /**
@@ -61,8 +60,7 @@ class PemasukanController extends Controller
      */
     public function show(Pemasukan $pemasukan)
     {
-        $kurator = MKurator::orderBy('nama')->pluck('nama','kurator_id');
-        return view('modals.pemasukanModal', compact('kurator','pemasukan'));
+        return view('modals.pemasukanModal', compact('pemasukan'));
     }
 
     /**
