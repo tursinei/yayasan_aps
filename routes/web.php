@@ -9,6 +9,7 @@ use App\Http\Controllers\Master\KuratorController;
 use App\Http\Controllers\Master\ProgramController;
 use App\Http\Controllers\PemasukanController;
 use App\Http\Controllers\PendidikanController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\RabController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\UsersController;
@@ -44,6 +45,7 @@ Route::resource('pendidikan',PendidikanController::class);
 Route::resource('rekammedis',RekamMedisController::class);
 Route::resource('rab',RabController::class);
 Route::resource('kas/pemasukan',PemasukanController::class);
+Route::resource('kas/pengeluaran',PengeluaranController::class);
 Route::get('pendaftaran', [CalonYatamaController::class, 'pendaftaran'])->name('calonyatama.pendaftaran');
 
 

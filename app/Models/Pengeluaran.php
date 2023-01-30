@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 //region ### Additional namespace #
@@ -48,7 +49,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Pengeluaran                  updateOrCreate($attributes, $values = ['*'])
  * @method static Collection|Pengeluaran[]     get($columns = ['*'])
  */
-class Pengeluaran extends Eloquent
+class Pengeluaran extends Model
 {
     /**
      * The table associated with the model.
@@ -91,13 +92,12 @@ class Pengeluaran extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'pengeluaran_id',
         'tgl',
         'kegiatan_id',
         'program_id',
         'keterangan',
         'nominal',
-        'kurator_id',
+        'kurator',
     ];
 
     /**
@@ -122,12 +122,13 @@ class Pengeluaran extends Eloquent
      * @var array
      */
     protected $casts = [
+        'tgl'            => 'date:d-m-Y',
         'pengeluaran_id' => 'integer',
         'kegiatan_id'    => 'integer',
         'program_id'     => 'integer',
         'keterangan'     => 'string',
-        'nominal'        => 'float',
-        'kurator_id'     => 'integer',
+        'nominal'        => 'string',
+        'kurator'        => 'string',
     ];
 
     /**
@@ -136,14 +137,6 @@ class Pengeluaran extends Eloquent
     public function mKegiatan()
     {
         return $this->belongsTo('App\Models\MKegiatan', 'kegiatan_id', 'kegiatan_id');
-    }
-
-    /**
-     * @return BelongsTo|Builder|MKurator
-     */
-    public function mKurator()
-    {
-        return $this->belongsTo('App\Models\MKurator', 'kurator_id', 'kurator_id');
     }
 
     /**
