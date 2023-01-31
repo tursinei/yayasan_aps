@@ -85,7 +85,7 @@
 							<i class="icon-lock"></i> Ganti Password</a>
 						</li>
 						<li>
-							<a href="login.html">
+							<a href="{{ route('logout') }}">
 							<i class="icon-key"></i> Log Out </a>
 						</li>
 					</ul>

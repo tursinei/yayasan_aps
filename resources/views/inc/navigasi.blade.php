@@ -26,7 +26,7 @@ function renderSubMenu($value, $currentUrl)
         } else {
             $menu['url'] = URL::to($menu['url']);
         }
-        $subMenu .='<li class="' .$active . '"> <a class="iconfy" href="' .$menu['url']
+        $subMenu .='<li class="' .$active . '"> <a class="iconfy" data-current="'.$currentUrl .'" href="' .$menu['url']
                 .'" title="' .$hasSubTitle .'" >' .$hasIcon .' ' .$hasTitle .'</a></li>';
     }
     return ['subMenu' => $subMenu, 'parentActive' => $isParentActive];
@@ -50,9 +50,6 @@ function renderMenu()
         } else {
             $menu['url'] = URL::to($menu['url']);
         }
-        // if (!in_array(Session::get('lkpj_tipe'), $menu['akses'])) {
-        //     continue;
-        // }
 
         $idMenu = 'navbar-' . str_replace(' ', '', $menu['title']);
         // $hasSub = !empty($menu['sub_menu']) ? 'menu-dropdown mega-menu-dropdown' : '';

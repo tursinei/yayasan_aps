@@ -5,7 +5,6 @@ use App\Http\Controllers\CalonYatamaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Master\KegiatanController;
 use App\Http\Controllers\Master\KelasController;
-use App\Http\Controllers\Master\KuratorController;
 use App\Http\Controllers\Master\ProgramController;
 use App\Http\Controllers\PemasukanController;
 use App\Http\Controllers\PendidikanController;
@@ -29,24 +28,41 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
+})->middleware('guest');
+Route::get('/dashboard', [HomeController::class,'index'])->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth','role:admin'])->group(function(){
+    Route::resource('user', UsersController::class);
+    Route::resource('program', ProgramController::class);
+    Route::resource('kegiatan', KegiatanController::class);
+    // Route::resource('kurator', KuratorController::class);
+    Route::resource('kelas', KelasController::class);
 });
 
-Route::get('/dashboard', [HomeController::class,'index'])->name('dashboard');//->middleware(['auth'])
+Route::middleware(['auth','role:admin|kordes|humas'])->group(function(){
+    Route::resource('pendidikan',PendidikanController::class);
+    Route::resource('yatama', AnakAsuhController::class);
+});
+Route::middleware(['auth','role:admin|kordes|humas|kesehatan'])->group(function(){
+    Route::get('pendaftaran', [CalonYatamaController::class, 'pendaftaran'])->name('calonyatama.pendaftaran');
+    Route::resource('calonyatama',CalonYatamaController::class);
+    Route::resource('rekammedis',RekamMedisController::class);
+});
+Route::middleware(['auth','role:admin|sekretaris'])->group(function(){
+    Route::resource('verifikasi',VerifikasiController::class);
+});
 
-Route::resource('user', UsersController::class);
-Route::resource('yatama', AnakAsuhController::class);
-Route::resource('program', ProgramController::class);
-Route::resource('kegiatan', KegiatanController::class);
-Route::resource('kurator', KuratorController::class);
-Route::resource('kelas', KelasController::class);
-Route::resource('calonyatama',CalonYatamaController::class);
-Route::resource('verifikasi',VerifikasiController::class);
-Route::resource('pendidikan',PendidikanController::class);
-Route::resource('rekammedis',RekamMedisController::class);
-Route::resource('rab',RabController::class);
-Route::resource('kas/pemasukan',PemasukanController::class);
-Route::resource('kas/pengeluaran',PengeluaranController::class);
-Route::get('pendaftaran', [CalonYatamaController::class, 'pendaftaran'])->name('calonyatama.pendaftaran');
+Route::middleware(['auth','role:admin|bendahara'])->group(function(){
+    Route::resource('rab',RabController::class);
+    Route::resource('kas/pemasukan',PemasukanController::class);
+    Route::resource('kas/pengeluaran',PengeluaranController::class);
+});
+// laporan
+Route::middleware(['auth','role:admin|pengurus|kordes|sekretaris|bendahara|humas'])->group(function(){
+    Route::resource('rab',RabController::class);
+});
+Route::middleware(['auth','role:admin|kesehatan'])->group(function(){
+    Route::resource('rab',RabController::class);
+});
 
 
 require __DIR__.'/auth.php';

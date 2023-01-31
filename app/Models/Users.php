@@ -7,8 +7,8 @@ use Eloquent;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 //region ### Additional namespace #
 //endregion
@@ -53,7 +53,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Users                  updateOrCreate($attributes, $values = ['*'])
  * @method static Collection|Users[]     get($columns = ['*'])
  */
-class Users extends Model
+class Users extends Authenticatable
 {
     /**
      * The table associated with the model.
@@ -88,7 +88,7 @@ class Users extends Model
      *
      * @var array
      */
-    protected $hidden = ['password'];
+    protected $hidden = ['password','remember_token'];
 
     /**
      * The attributes that are mass assignable.
@@ -131,6 +131,7 @@ class Users extends Model
         'email'          => 'string',
         'password'       => 'string',
         'remember_token' => 'string',
+        'email_verified_at' => 'datetime',
         'created_at'     => 'date:d-m-Y'
     ];
 

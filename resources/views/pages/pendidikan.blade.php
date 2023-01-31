@@ -32,7 +32,7 @@
 @endsection
 
 @push('js')
-    <script src="{{ assets('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(params) {
             $('#tbl-data').tPaginate({
