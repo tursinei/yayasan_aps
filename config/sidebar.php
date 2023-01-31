@@ -143,12 +143,12 @@ return [
                     'url'       => 'kegiatan.index',
                     'akses'     => [IS_ADMIN]
                 ],
-                [
-                    'icon'      => 'icon-user',
-                    'title'     => 'Kurator',
-                    'url'       => 'kurator.index',
-                    'akses'     => [IS_ADMIN]
-                ],
+                // [
+                //     'icon'      => 'icon-user',
+                //     'title'     => 'Kurator',
+                //     'url'       => 'kurator.index',
+                //     'akses'     => [IS_ADMIN]
+                // ],
                 [
                     'icon'      => 'icon-folder',
                     'title'     => 'Kelas',

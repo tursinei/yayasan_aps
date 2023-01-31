@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class PendidikanController extends Controller
 {
     private PendidikanService $service;
+    protected $jenjang = ['Belum Sekolah','SD','SMP/MTS','SMA/MAN'];
 
     public function __construct(PendidikanService $serviceParam)
     {
@@ -39,7 +40,8 @@ class PendidikanController extends Controller
         $anakService = new AnakAsuhService();
         $listAnak = $anakService->listNamaAnakAktif();
         $listKelas = $this->service->listKelas();
-        return view('modals.pendidikanModal', compact('listAnak','listKelas'));
+        $jenjangs = array_combine($this->jenjang,$this->jenjang);
+        return view('modals.pendidikanModal', compact('listAnak','listKelas','jenjangs'));
     }
 
     /**
@@ -67,7 +69,8 @@ class PendidikanController extends Controller
         $anakService = new AnakAsuhService();
         $listAnak = $anakService->listNamaAnakAktif();
         $listKelas = $this->service->listKelas();
-        return view('modals.pendidikanModal',compact('pendidikan','listAnak','listKelas'));
+        $jenjangs = array_combine($this->jenjang,$this->jenjang);
+        return view('modals.pendidikanModal',compact('pendidikan','listAnak','listKelas','jenjangs'));
     }
 
     /**

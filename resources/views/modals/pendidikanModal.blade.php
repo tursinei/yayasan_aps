@@ -20,9 +20,9 @@
                 <label class="col-md-3 control-label pt-0">Jenjang Sekolah</label>
                 <div class="col-md-9">
                     @php
-                        $options['placeholder'] = 'Jenjang Pendidikan';
+                        $options['placeholder'] = '-- Pilh Jenjang Pendidikan--';
                     @endphp
-                    {!! Form::text('jenjang', $pendidikan->jenjang??'', $options) !!}
+                    {!! Form::select('jenjang', $jenjangs,$pendidikan->jenjang??'', $options) !!}
                 </div>
             </div>
             <div class="form-group">
