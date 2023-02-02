@@ -15,9 +15,8 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $roles)
+    public function handle(Request $request, Closure $next, ...$role)
     {
-        $role = explode('|',$roles);
         $roles = array_map(function($v){
             return constant('IS_'.strtoupper($v));
         }, $role);

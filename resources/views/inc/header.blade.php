@@ -55,8 +55,8 @@
 <div class="page-header-inner">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
-			<a href="index.html">
-			<img src="../../assets/admin/layout/img/logo.png" alt="logo" class="logo-default">
+			<a href="{{ route('dashboard') }}">
+			 <img src="{{ asset('img/logo_head.png') }}" alt="logo" style="height: 40px;margin-top: 5px;"  class="logo-default">
 			</a>
 			<div class="menu-toggler sidebar-toggler hide">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -76,13 +76,13 @@
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false">
 					<img alt="" class="img-circle" src="../../assets/admin/layout/img/avatar3_small.jpg">
 					<span class="username username-hide-on-mobile">
-					Nick </span>
+					{{ Auth::user()->name }}</span>
 					<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
-							<a href="extra_lock.html">
-							<i class="icon-lock"></i> Ganti Password</a>
+							<a href="#" data-id="{{ Auth::user()->id }}" id="header-form-profil">
+							<i class="icon-users"></i> Profile</a>
 						</li>
 						<li>
 							<a href="{{ route('logout') }}">

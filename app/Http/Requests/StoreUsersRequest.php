@@ -27,7 +27,7 @@ class StoreUsersRequest extends FormRequest
             'name'      => ['required','string','max:255'],
             'email'  => ['required', 'string','max:255'],
             'password'  => ['required_without:id','confirmed'],
-            'peran'     => ['required','between:0,6']
+            'peran'     => ['nullable','between:0,6']
         ];
     }
 

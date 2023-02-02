@@ -1,4 +1,4 @@
-<title>@yield('title') | e-LKPJ @php
+<title>@yield('title') | KULIA @php
     echo date('Y');
 @endphp</title>
 <meta name="author" content="Velly Coderz">

@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    @section('title', 'Login || e-LKPJ')
+    @section('title', 'Login || KULIA')
     @push('css')
         <link href="{{ asset('css/login-soft.css') }}" rel="stylesheet" type="text/css" />
     @endpush
@@ -22,15 +22,13 @@
     <div class="logo">
         {{-- <a href="index.html"> LKPJ </a> --}}
         <div class="header-logo" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-            <div style="display: inline-block;width: 70px;margin: 10px 0;">
-                <img src="{{ asset('img/batukota_logo.png') }}" alt="" style="width: 100%;">
+            <div style="display: inline-block;width: 120px;margin: 10px 0;">
+                <img src="{{ asset('img/logo.png') }}" alt="" style="width: 100%;">
             </div>
-            <h1 style="text-transform: uppercase;font-size: 22px;font-weight: bold; color:white;margin-top: 10px;">PEMERINTAH KOTA BATU</h1> <br>
-            <h1 style="text-transform: uppercase;font-size: 15px;font-weight: bold; color:white;margin-top: 0px;">BAGIAN PEMERINTAHAN SEKRETARIAT DAERAH</h1> <br>
+            <h1 style="text-transform: uppercase;font-size: 22px;font-weight: bold; color:white;margin-top: 10px;">KULIA</h1> <br>
+            <h1 style="text-transform: uppercase;font-size: 15px;font-weight: bold; color:white;margin-top: 0px;">Kumpulan Peduli Anak Yatim Dan Dhuafa</h1> <br>
             <p class="inline-block" style="text-transform: uppercase;font-size: 11px; color:white;">
-                Balaikota Among Tani, Jl. Panglima Sudirman No.507, Pesanggrahan,
-                <br>
-                Kec. Batu, Kota Batu, Jawa Timur 65314
+                Kec. Ngoro, Kabupaten Mojokerto, Jawa Timur 61385
             </p>
         </div>
     </div>
@@ -44,7 +42,7 @@
         <!-- BEGIN LOGIN FORM -->
         <form class="login-form" action="{{ route('login') }}" method="POST">
             @csrf
-            <h3 class="form-title text-center">E - LKPJ v.1</h3>
+            <h3 class="form-title text-center">LOGIN</h3>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <button class="close" data-close="alert"></button>
@@ -118,7 +116,7 @@
     <div class="copyright">
         @php
             echo date('Y');
-        @endphp &copy; Geomedia Sinergi | E - LKPJ
+        @endphp &copy; KULIA
     </div>
     @push('js')
         <script src="{{ asset('js/login-soft.js') }}" type="text/javascript"></script>

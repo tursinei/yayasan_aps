@@ -48,29 +48,23 @@
         let url = `{{ route('logout') }}`;
         bootbox.confirm(`Apakah Anda Yakin akan Keluar ?`,function(ans) {
             if(ans){
-                // gAjax(b.find('i'),{
-                //     url: url,
-                //     // dataType : 'JSON',
-                //     type : 'POST',
-                //     done :function(e){
-                //         // $('#tahun').trigger('change');
-                //     }
-                // });
                 window.location.href = url;
             }
         });
-    }).on('click', '#btn-change-password', function() {
-        var b = $(this), url = ``;
+    }).on('click', '#header-form-profil', function(e) {
+        e.preventDefault();
+        var b = $(this), url = `{{ route('profile.form', ['users' => ':id']) }}`;
+        url = url.replace(':id', b.attr('data-id'));
         gAjax(b.find('i'), {
             url: url,
-            dataType : 'JSON',
+            dataType : 'html',
             done: function(e) {
-                showModal(e.modal);
+                showModal(e);
             }
         });
-    }).on('submit','#fo-change-password', function(e){
+    }).on('submit','#fo-changePass', function(e){
         e.preventDefault();
-        let f = $(this), url = ``, b = f.find('button[type="submit"]');
+        let f = $(this), url = '{{ route('profile.simpan') }}', b = f.find('button[type="submit"]');
         let data = f.serializeArray();
         gAjax(b.find('i'), {
             url: url,
@@ -78,12 +72,9 @@
             dataType : 'JSON',
             type : 'POST',
             done: function(e) {
-                if(e.status){
-                    f.parents('div.modal').modal('hide');
-                    msgSuccess(e.message);
-                } else {
-                    msgAlert(e.message);
-                }
+                f.parents('div.modal').modal('hide');
+                $('span.username').text(e.name);
+                msgSuccess(e.message);
             }
         });
     });

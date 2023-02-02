@@ -16,19 +16,24 @@ use App\Http\Controllers\VerifikasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
+,--------------------------------------------------------------------------
+, Web Routes
+,--------------------------------------------------------------------------
+,
+, Here is where you can register web routes for your application. These
+, routes are loaded by the RouteServiceProvider within a group which
+, contains the "web" middleware group. Now create something great!
+,
 */
 
 Route::get('/', function () {
     return view('login');
 })->middleware('guest');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboard', [HomeController::class,'index'])->name('dashboard');
+    Route::get('formProfile/{users}', [UsersController::class,'edit'])->name('profile.form');
+    Route::post('simpanProfile',[UsersController::class,'store'])->name('profile.simpan');
+});
 Route::get('/dashboard', [HomeController::class,'index'])->middleware(['auth'])->name('dashboard');
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::resource('user', UsersController::class);
@@ -38,29 +43,29 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::resource('kelas', KelasController::class);
 });
 
-Route::middleware(['auth','role:admin|kordes|humas'])->group(function(){
+Route::middleware(['auth','role:admin,kordes,humas'])->group(function(){
     Route::resource('pendidikan',PendidikanController::class);
     Route::resource('yatama', AnakAsuhController::class);
 });
-Route::middleware(['auth','role:admin|kordes|humas|kesehatan'])->group(function(){
+Route::middleware(['auth','role:admin,kordes,humas,kesehatan'])->group(function(){
     Route::get('pendaftaran', [CalonYatamaController::class, 'pendaftaran'])->name('calonyatama.pendaftaran');
     Route::resource('calonyatama',CalonYatamaController::class);
     Route::resource('rekammedis',RekamMedisController::class);
 });
-Route::middleware(['auth','role:admin|sekretaris'])->group(function(){
+Route::middleware(['auth','role:admin,sekretaris'])->group(function(){
     Route::resource('verifikasi',VerifikasiController::class);
 });
 
-Route::middleware(['auth','role:admin|bendahara'])->group(function(){
+Route::middleware(['auth','role:admin,bendahara'])->group(function(){
     Route::resource('rab',RabController::class);
     Route::resource('kas/pemasukan',PemasukanController::class);
     Route::resource('kas/pengeluaran',PengeluaranController::class);
 });
 // laporan
-Route::middleware(['auth','role:admin|pengurus|kordes|sekretaris|bendahara|humas'])->group(function(){
+Route::middleware(['auth','role:admin,pengurus,kordes,sekretaris,bendahara,humas'])->group(function(){
     Route::resource('rab',RabController::class);
 });
-Route::middleware(['auth','role:admin|kesehatan'])->group(function(){
+Route::middleware(['auth','role:admin,kesehatan'])->group(function(){
     Route::resource('rab',RabController::class);
 });
 

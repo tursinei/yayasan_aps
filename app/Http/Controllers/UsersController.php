@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
 use App\Services\UsersService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -50,7 +51,7 @@ class UsersController extends Controller
     public function store(StoreUsersRequest $request)
     {
         $this->service->simpan($request);
-        return response()->json(['message' => trans('crud.simpan')]);
+        return response()->json(['message' => trans('crud.simpan'), 'name' => Auth::user()->name]);
     }
 
     /**
@@ -72,7 +73,7 @@ class UsersController extends Controller
      */
     public function edit(Users $users)
     {
-        //
+        return view('modals.profileModal', compact('users'));
     }
 
     /**
