@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-12">
             <button class="btn btn-success btn-sm" id="btn-add"><i class="fa fa-plus"></i> Tambah data</button><br/>
-            <table id="tbl-data" class="table table-bordered table-striped table-hover table-green">
+            <table id="tbl-data" class="table table-striped table-hover table-green">
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 5%;">No</th>

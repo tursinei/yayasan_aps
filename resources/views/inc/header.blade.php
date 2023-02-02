@@ -94,7 +94,7 @@
 				<!-- BEGIN QUICK SIDEBAR TOGGLER -->
 				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-quick-sidebar-toggler">
-					<a href="javascript:;" class="dropdown-toggle" title="logout">
+					<a href="{{ route('logout') }}" class="dropdown-toggle" title="logout">
 					<i class="icon-logout"></i>
 					</a>
 				</li>

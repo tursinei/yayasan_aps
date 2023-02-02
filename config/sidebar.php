@@ -47,8 +47,8 @@ return [
                 ],
                 [
                     'icon'      => 'icon-graduation',
-                    'title'     => 'Pendidikan.index',
-                    'url'       => 'pendidikan',
+                    'title'     => 'Pendidikan',
+                    'url'       => 'pendidikan.index',
                     'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS]
                 ],
                 [

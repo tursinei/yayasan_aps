@@ -23,7 +23,7 @@ $options = [
             <button class="btn btn-sm btn-success" id="btn-add"><i class="fa fa-plus"></i> Tambah RAB</button>
         </div>
         <div class="col-md-12">
-            <table id="tbl-data" class="table table-bordered table-striped table-hover table-green">
+            <table id="tbl-data" class="table table-striped table-hover table-green">
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 10%;">No</th>
