@@ -31,10 +31,10 @@ Route::get('/', function () {
 })->middleware('guest');
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [HomeController::class,'index'])->name('dashboard');
+    Route::get('/dashboard/jumlah', [HomeController::class,'jumlah'])->name('dashboard.jumlah');
     Route::get('formProfile/{users}', [UsersController::class,'edit'])->name('profile.form');
     Route::post('simpanProfile',[UsersController::class,'store'])->name('profile.simpan');
 });
-Route::get('/dashboard', [HomeController::class,'index'])->middleware(['auth'])->name('dashboard');
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::resource('user', UsersController::class);
     Route::resource('program', ProgramController::class);
