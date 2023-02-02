@@ -42,7 +42,16 @@
     jQuery(document).ready(function() {
         Metronic.init(); // init metronic core components
         Layout.init(); // init current layout
-
+        let ulBread = $('ul.page-breadcrumb');
+        let liActive = $('ul.page-sidebar-menu').find('li.active');
+        liActive.each(function(i,e){
+            let t = $(this).find('a:first').text();
+            let li = $('<li></li>').append('<a href="#">'+t+'</a>');
+            if((liActive.length-1) != i){
+                li.append('<i class="fa fa-angle-right">');
+            }
+            ulBread.append(li);
+        });
     }).on('click', '#btn-logout', function() {
         let b = $(this);
         let url = `{{ route('logout') }}`;

@@ -7,7 +7,7 @@ define('IS_SEKRETARIS', 3);
 define('IS_BENDAHARA', 4);
 define('IS_HUMAS', 5);
 define('IS_KESEHATAN', 6);
-
+//https://graphicburger.com/simple-line-icons-webfont/
 return [
     'menu' => [
         [
@@ -16,110 +16,110 @@ return [
             'url'   => 'dashboard',
             'akses' => [IS_ADMIN, IS_PENGURUS, IS_KORDES, IS_HUMAS, IS_BENDAHARA, IS_KESEHATAN, IS_SEKRETARIS]
         ], [
-            'icon'  => 'icon-notebook',
+            'icon'  => 'icon-note',
             'title' => 'Pendaftaran',
             'subTitle' => 'Daftar Yatama',
             'url'   => 'calonyatama.pendaftaran',
             'akses' => [IS_ADMIN, IS_KORDES, IS_HUMAS, IS_KESEHATAN]
         ], [
-            'icon'      => 'icon-briefcase',
+            'icon'      => 'icon-hourglass',
             'title'     => 'Calon Yatama',
             'subTitle'  => 'Yatama Sebelum Diverifikasi',
             'url'       => 'calonyatama.index',
             'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS, IS_KESEHATAN]
         ], [
-            'icon'      => 'icon-briefcase',
+            'icon'      => 'icon-magic-wand',
             'title'     => 'Verifikasi',
             'subTitle'  => 'Verifikasi Calon Yatama',
             'url'       => 'verifikasi.index',
             'akses'     => [IS_ADMIN, IS_SEKRETARIS]
         ], [
-            'icon'      => 'icon-briefcase',
+            'icon'      => 'icon-user-female',
             'title'     => 'Yatama',
             'url'       => '#',
             'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS, IS_KESEHATAN],
             'sub_menu'  => [
                 [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-book-open',
                     'title'     => 'Data Informasi',
                     'url'       => 'yatama.index',
                     'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS]
                 ],
                 [
-                    'icon'      => 'icon-layers',
-                    'title'     => 'Pendidikan',
+                    'icon'      => 'icon-graduation',
+                    'title'     => 'Pendidikan.index',
                     'url'       => 'pendidikan',
                     'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS]
                 ],
                 [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-shield',
                     'title'     => 'Rekam Medis',
-                    'url'       => 'rekammedis',
+                    'url'       => 'rekammedis.index',
                     'akses'     => [IS_ADMIN, IS_KORDES, IS_HUMAS, IS_KESEHATAN]
                 ],
             ]
         ], [
-            'icon'  => 'icon-envelope-letter',
+            'icon'  => 'icon-calculator',
             'title' => 'RAB',
             'subTitle'  => 'Rancangan Anggaran Belanja',
-            'url'   => 'rab',
+            'url'   => 'rab.index',
             'akses' => [IS_ADMIN, IS_BENDAHARA]
         ], [
-            'icon'      => 'icon-briefcase',
+            'icon'      => 'icon-wallet',
             'title'     => 'KAS',
             'url'       => '#',
             'akses'     => [IS_ADMIN, IS_BENDAHARA],
             'sub_menu'  => [
                 [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-call-in',
                     'title'     => 'Pemasukan',
                     'url'       => 'pemasukan.index',
                     'akses'     => [IS_ADMIN, IS_BENDAHARA]
                 ], [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-call-out',
                     'title'     => 'Pengeluaran',
                     'url'       => 'pengeluaran.index',
                     'akses'     => [IS_ADMIN, IS_BENDAHARA]
                 ],
             ]
         ], [
-            'icon'      => 'icon-briefcase',
+            'icon'      => 'icon-bar-chart',
             'title'     => 'Laporan',
             'url'       => '#',
             'akses'     => [IS_ADMIN, IS_PENGURUS, IS_KORDES, IS_HUMAS, IS_BENDAHARA, IS_KESEHATAN, IS_SEKRETARIS],
             'sub_menu'  => [
                 [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-users',
                     'title'     => 'Yatama',
                     'url'       => 'laporan-yatama',
                     'akses'     => [IS_ADMIN, IS_PENGURUS, IS_KORDES, IS_SEKRETARIS, IS_BENDAHARA, IS_HUMAS]
                 ], [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-graduation',
                     'title'     => 'Alumni Yatama',
                     'url'       => 'laporan-alumni',
                     'akses'     => [IS_ADMIN, IS_PENGURUS, IS_KORDES, IS_SEKRETARIS, IS_BENDAHARA, IS_HUMAS]
                 ], [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-call-in',
                     'title'     => 'Pemasukan',
                     'url'       => 'laporan-pemasukan',
                     'akses'     => [IS_ADMIN, IS_PENGURUS, IS_KORDES, IS_SEKRETARIS, IS_BENDAHARA, IS_HUMAS]
                 ], [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-call-out',
                     'title'     => 'Pengeluaran',
                     'url'       => 'laporan-pengeluaran',
                     'akses'     => [IS_ADMIN, IS_PENGURUS, IS_KORDES, IS_SEKRETARIS, IS_BENDAHARA, IS_HUMAS]
                 ], [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-bag',
                     'title'     => 'RAB',
                     'url'       => 'laporan-rab',
                     'akses'     => [IS_ADMIN, IS_PENGURUS, IS_KORDES, IS_SEKRETARIS, IS_BENDAHARA, IS_HUMAS]
                 ], [
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-eyeglasses',
                     'title'     => 'Pendidikan Yatama',
                     'url'       => 'laporan-pendidikan',
                     'akses'     => [IS_ADMIN, IS_KESEHATAN]
                 ],[
-                    'icon'      => 'icon-layers',
+                    'icon'      => 'icon-plus',
                     'title'     => 'Rekam Medis',
                     'url'       => 'laporan-rekam-medis',
                     'akses'     => [IS_ADMIN, IS_KESEHATAN]
