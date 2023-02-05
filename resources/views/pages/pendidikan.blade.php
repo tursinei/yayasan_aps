@@ -3,6 +3,11 @@
 @section('title', 'Pendidikan')
 @push('css')
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" type="text/css">
+    <style>
+        .select2-container{
+            z-index: 99999 !important;
+        }
+    </style>
 @endpush
 @section('content')
     <div class="row">
@@ -51,9 +56,15 @@
                 url : '{{ route('pendidikan.create') }}',
                 dataType : 'html',
                 done :  function (res) {
-                    showModal(res);
-                    $('select[name="anakasuh_id"]').select2({
-                        dropdownParent : $('#myModal .modal-content')
+                    // Do this before you initialize any of your modals
+                    $.fn.modal.Constructor.prototype.enforceFocus = function() {
+                        console.log('enforce');
+                        console.log(this);
+                    };
+                    let s = showModal(res,function(mdl){
+                        // $(mdl).attr("tabindex",-1);
+                    }).find('select[name="anakasuh_id"]').select2({
+                        width: '100%',
                     });
                 }
             });

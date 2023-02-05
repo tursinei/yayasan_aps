@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AnakAsuh;
 use App\Http\Requests\StoreAnakAsuhRequest;
 use App\Http\Requests\UpdateAnakAsuhRequest;
+use App\Models\Users;
 use App\Services\AnakAsuhService;
 use Illuminate\Http\Request;
 
@@ -66,7 +67,8 @@ class AnakAsuhController extends Controller
     public function show(AnakAsuh $yatama)
     {
         $anak = $yatama;
-        return view('modals.anakasuhModal',compact('anak'));
+        $kordes = $kordes = Users::kordes()->orderBy('name')->pluck('name','id')->toArray();
+        return view('modals.anakasuhModal',compact('anak','kordes'));
     }
 
     /**

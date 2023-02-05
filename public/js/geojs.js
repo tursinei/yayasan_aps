@@ -118,12 +118,15 @@ var refreshTableServerOn = function (a, url, setCol, i, orderCol = []) {
     });
 };
 
-var showModal = function(e){
+var showModal = function(e, shownFunc, hideFunc){
     return $(e).modal({
         backdrop: 'static',
         keydrop: false
     }).on('hidden.bs.modal', function () {
         $(this).remove();
+        hideFunc(this);
+    }).on('shown.bs.modal', function(){
+        shownFunc(this);
     });
 }
 

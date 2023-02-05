@@ -9,7 +9,7 @@
             <div class="form-group">
                 {!! Form::hidden('pendidikan_id', $pendidikan->pendidikan_id??'') !!}
                 <label class="col-md-3 control-label pt-0">Nama</label>
-                <div class="col-md-9">
+                <div class="col-md-9" id="mdl-select">
                     @php
                         $options['placeholder'] = '--Pilih Yatama --';
                     @endphp
