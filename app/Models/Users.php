@@ -165,6 +165,11 @@ class Users extends Authenticatable
         return $this->hasMany('App\Models\Cashflow', 'user_id', 'id');
     }
 
+    public function scopeKordes($query)
+    {
+        return $query->where('peran',2);
+    }
+
     //region ### User defined function #
     //endregion
 }

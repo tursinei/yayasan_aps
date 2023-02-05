@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CalonYatama;
 use App\Http\Requests\StoreCalonYatamaRequest;
 use App\Http\Requests\UpdateCalonYatamaRequest;
+use App\Models\Users;
 use App\Services\CalonYatamaService;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class CalonYatamaController extends Controller
@@ -33,7 +33,7 @@ class CalonYatamaController extends Controller
 
     public function pendaftaran()
     {
-        $kordes = User::kordes()->orderBy('name')->pluck('name','id')->toArray();
+        $kordes = Users::kordes()->orderBy('name')->pluck('name','id')->toArray();
         return view('pages.pendaftaran',compact('kordes'));
     }
     /**

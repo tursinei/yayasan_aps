@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    @section('title', 'Login || KULIA')
+    @section('title', 'Login ||')
     @push('css')
         <link href="{{ asset('css/login-soft.css') }}" rel="stylesheet" type="text/css" />
     @endpush
