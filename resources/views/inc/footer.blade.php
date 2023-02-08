@@ -1,8 +1,8 @@
 <!-- BEGIN FOOTER -->
 @if (!$isLogin ?? true)
 <div class="page-footer">
-    <div class="container-fluid"><center>
-        E - LKPJ v.1 | SISTEM INFORMASI LAPORAN KETERANGAN PERTANGGUNGJAWABAN | Copyright &copy; PT. Geomedia Sinergi
+    <div class="container-fluid text-white"><center>
+        App v.1 | Copyright &copy; KULIA
         @php
             echo date('Y');
         @endphp
