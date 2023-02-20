@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <input type="hidden" name="kelas_id" value="">
                     <label class="col-md-3">Nama Kelas</label>
-                    <div class="col-md-9">
+                    <div class="col-md-6">
                         @php
                             $options= [
                                 'placeholder' => 'Nama Kelas',
@@ -17,6 +17,13 @@
                             ];
                         @endphp
                         {!! Form::text('kelas_nama', '', $options) !!}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="checkbox-list"><label class="checkbo-inline">
+                            {!! Form::checkbox('lulus', 1, false, $options) !!}
+                            &nbsp;Lulus
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -34,7 +41,10 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 10%;">No</th>
-                        <th class="text-center" style="width: 70%;">Nama Kelas</th>
+                        <th class="text-center" style="width: 60%;">Nama Kelas</th>
+                        <th class="text-center" style="width: 10%;">Lulus <i class="fa fa-question-circle"
+                            title="Yatama akan masuk pilihan daftar Alumni,untuk dikonfirmasi"></i>
+                        </th>
                         <th class="text-center" style="width: 20%;">&nbsp;</th>
                     </tr>
                 </thead>
@@ -56,10 +66,15 @@
                 colId: 'kelas_id',
                 cols: [
                     { key: 'kelas_nama', class: ''},
+                    function(obj, td) {
+                        td.addClass('text-center');
+                        return obj.lulus ? '<i class="fa fa-check text-success"></i>' : '';
+                    },
                 ]
             });
         }).on('reset', '#fo-kelas', function(e) {
             $('input[name="kelas_id"]').val('');
+            $('input[name="lulus"]').prop('checked', false).parent().removeClass('checked');
         }).on('submit', '#fo-kelas', function(e) {
             e.preventDefault();
             let fo = $(this),
@@ -86,6 +101,11 @@
                 done: function(res) {
                     $('input[name="kelas_id"]').val(res.kelas_id);
                     $('input[name="kelas_nama"]').val(res.kelas_nama);
+                    $('input[name="lulus"]').prop('checked',false).parent().removeClass('checked');
+                    if(res.lulus){
+                        $('input[name="lulus"]').prop('checked',true).parent().addClass('checked');
+                    }
+
                 }
             });
         }).on('click', '.btn-delete', function() {

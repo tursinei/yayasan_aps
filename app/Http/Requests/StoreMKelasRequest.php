@@ -26,6 +26,7 @@ class StoreMKelasRequest extends FormRequest
         return [
             'kelas_id' => ['nullable', 'integer'],
             'kelas_nama' => ['required', 'max:100'],
+            'lulus' => ['nullable']
         ];
     }
 

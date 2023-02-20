@@ -81,6 +81,7 @@ class MKelas extends Model
     protected $fillable = [
         'kelas_id',
         'kelas_nama',
+        'lulus',
     ];
 
     /**
@@ -105,6 +106,7 @@ class MKelas extends Model
     protected $casts = [
         'kelas_id' => 'integer',
         'kelas_nama'       => 'string',
+        'lulus'       => 'boolean',
     ];
 
 
